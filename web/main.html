@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <title>首页</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="stylesheet" type="text/css" href="./css/materialdesignicons.min.css">
+  <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./css/style.min.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+
+    <div class="row" id="top-bar">
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-6 col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">单科成绩走势</div>
+          </div>
+          <div class="card-body">
+            <canvas class="js-chartjs-lines"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">总分走势</div>
+          </div>
+          <div class="card-body">
+            <canvas class="js-chartjs-lines"></canvas>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-12">
+        <div class="card">
+          <header class="card-header">
+            <div class="card-title">项目信息</div>
+          </header>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>项目名称</th>
+                    <th>开始日期</th>
+                    <th>截止日期</th>
+                    <th>状态</th>
+                    <th>进度</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>设计新主题</td>
+                    <td>10/02/2019</td>
+                    <td>12/05/2019</td>
+                    <td><span class="badge bg-warning">待定</span></td>
+                    <td>
+                      <div class="progress progress-xs">
+                        <div class="progress-bar progress-bar-striped bg-warning" style="width: 45%;"></div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>网站重新设计</td>
+                    <td>01/03/2019</td>
+                    <td>12/04/2019</td>
+                    <td><span class="badge bg-success">进行中</span></td>
+                    <td>
+                      <div class="progress progress-xs">
+                        <div class="progress-bar progress-bar-striped bg-success" style="width: 30%;"></div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>模型设计</td>
+                    <td>10/10/2019</td>
+                    <td>12/11/2019</td>
+                    <td><span class="badge bg-warning">待定</span></td>
+                    <td>
+                      <div class="progress progress-xs">
+                        <div class="progress-bar progress-bar-striped bg-warning" style="width: 25%;"></div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>后台管理系统模板设计</td>
+                    <td>25/01/2019</td>
+                    <td>09/05/2019</td>
+                    <td><span class="badge bg-success">进行中</span></td>
+                    <td>
+                      <div class="progress progress-xs">
+                        <div class="progress-bar progress-bar-striped bg-success" style="width: 55%;"></div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>前端设计</td>
+                    <td>10/10/2019</td>
+                    <td>12/12/2019</td>
+                    <td><span class="badge bg-danger">未开始</span></td>
+                    <td>
+                      <div class="progress progress-xs">
+                        <div class="progress-bar progress-bar-striped bg-danger" style="width: 0%;"></div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td>桌面软件测试</td>
+                    <td>10/01/2019</td>
+                    <td>29/03/2019</td>
+                    <td><span class="badge bg-success">进行中</span></td>
+                    <td>
+                      <div class="progress progress-xs">
+                        <div class="progress-bar progress-bar-striped bg-success" style="width: 75%;"></div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>7</td>
+                    <td>APP改版开发</td>
+                    <td>25/02/2019</td>
+                    <td>12/05/2019</td>
+                    <td><span class="badge bg-danger">暂停</span></td>
+                    <td>
+                      <div class="progress progress-xs">
+                        <div class="progress-bar progress-bar-striped bg-danger" style="width: 15%;"></div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>8</td>
+                    <td>Logo设计</td>
+                    <td>10/02/2019</td>
+                    <td>01/03/2019</td>
+                    <td><span class="badge bg-warning">完成</span></td>
+                    <td>
+                      <div class="progress progress-xs">
+                        <div class="progress-bar progress-bar-striped bg-success" style="width: 100%;"></div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script type="text/javascript" src="./js/jquery.min.js"></script>
+  <script type="text/javascript" src="./js/popper.min.js"></script>
+  <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="./js/chart.min.js"></script>
+  <script type="text/javascript" src="./js/main.min.js"></script>
+  <script src="./config.js"></script>
+  <script src="./settings.js"></script>
+  <script src="./main.js"></script>
+</body>
+
+</html>

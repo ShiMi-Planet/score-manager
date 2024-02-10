@@ -100,6 +100,7 @@ recommend you to use the `environment-zh_cn.yaml` file in the root directory as 
 
 ## Update History
 
+- ✔ 2024.02.10 ***First Commit***
 - 2024.02.09 **Finish score insert function page and service**
 - 2024.02.09 **Finish vd1 project's datebase basic structure**
 - 2024.02.08 **Finish subject selector page and service**
