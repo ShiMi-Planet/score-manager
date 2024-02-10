@@ -1,5 +1,7 @@
-.idea/*
-test.*
-*.db
-instance/*
-.vscode/*
+**/.idea/*
+**/test.*
+**/*.db
+**/instance/*
+**/.vscode/*
+**/__pycache__/*
+**/*.pyc
