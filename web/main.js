@@ -65,7 +65,7 @@ function get_data() {
   });
 }
 
-async function fill_topbar_data() {
+function fill_topbar_data() {
   data["top-bar"].forEach(n => {
     var code = `
     <div class="col-md-4 col-xs-12">

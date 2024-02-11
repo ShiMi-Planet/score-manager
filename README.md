@@ -98,9 +98,20 @@ recommend you to use anaconda environment to update the service and database, by
 
 recommend you to use the `environment-zh_cn.yaml` file in the root directory as your anaconda properties import entry, that way, you can prevent the net-work limitation, and enjoy the smooth deploy feelings
 
+## TODO List
+
+* [ ] Use PIL and Random module to update the security of login with verifycation code.
+
 ## Update History
 
-- ✔ 2024.02.10 ***First Commit***
+- ✔ ii 2024.02.11 ***Second Commit***
+- 2024.02.11 ***Update the environment.yaml file for new features***
+- 2024.02.11 **Use** *layui* **module to build the web font page in table element and connected with the back interfaces**
+- 2024.02.11 **Add new back interfaces with the service provides for analyze export
+- 2024.02.11 **Make back service better**
+    > Upgrade previous interface response data structure and request logic.
+- 2024.02.11 **Finish analyze export function's web font page**
+- ✔ i 2024.02.10 ***First Commit***
 - 2024.02.09 **Finish score insert function page and service**
 - 2024.02.09 **Finish vd1 project's datebase basic structure**
 - 2024.02.08 **Finish subject selector page and service**

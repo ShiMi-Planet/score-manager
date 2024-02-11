@@ -36,12 +36,12 @@ INSERT INTO subject (subject, subject_name, full_score) VALUES ('ch','语文',15
                                                                ('po','政治',100),
                                                                ('ge','地理',100);
 
-ALTER TABLE test_list ADD COLUMN ch int;
-ALTER TABLE test_list ADD COLUMN ma int;
-ALTER TABLE test_list ADD COLUMN en int;
-ALTER TABLE test_list ADD COLUMN ph int;
-ALTER TABLE test_list ADD COLUMN che int;
-ALTER TABLE test_list ADD COLUMN bi int;
-ALTER TABLE test_list ADD COLUMN hi int;
-ALTER TABLE test_list ADD COLUMN po int;
-ALTER TABLE test_list ADD COLUMN ge int;
+ALTER TABLE test_list ADD COLUMN ch int DEFAULT 0;
+ALTER TABLE test_list ADD COLUMN ma int DEFAULT 0;
+ALTER TABLE test_list ADD COLUMN en int DEFAULT 0;
+ALTER TABLE test_list ADD COLUMN ph int DEFAULT 0;
+ALTER TABLE test_list ADD COLUMN che int DEFAULT 0;
+ALTER TABLE test_list ADD COLUMN bi int DEFAULT 0;
+ALTER TABLE test_list ADD COLUMN hi int DEFAULT 0;
+ALTER TABLE test_list ADD COLUMN po int DEFAULT 0;
+ALTER TABLE test_list ADD COLUMN ge int DEFAULT 0;

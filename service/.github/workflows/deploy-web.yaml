@@ -1,0 +1,32 @@
+name: Push-to-Web-Branch
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  push-to-web:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        ref: 'main'
+        path: './web'
+
+    - name: Setup Git
+      run: |
+        git config user.name 'DreamBot'
+        git config user.email 'lipeilin375@gmail.com'
+
+    - name: Create web branch
+      run: git checkout -b web
+
+    - name: Add and commit files
+      run: |
+        git add .
+        git commit -m "Update web branch"
+
+    - name: Push changes
+      run: git push origin web

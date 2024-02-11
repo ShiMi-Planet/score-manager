@@ -1,5 +1,7 @@
 import sqlite3
 import os
+import bcrypt
+from werkzeug.security import generate_password_hash, check_password_hash
 
 filename = 'score-manager.db'
 
@@ -41,3 +43,12 @@ def is_column_exists(table_name, column_name):
 
     # Check if the specified column exists in the list of columns
     return column_name in columns
+
+
+def encrypt(content):
+    crypt = generate_password_hash(content)
+    return crypt
+
+
+def decrypt(content, crypt):
+    return check_password_hash(crypt, content)

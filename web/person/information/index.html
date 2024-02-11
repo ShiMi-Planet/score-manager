@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <title>个人信息</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="stylesheet" type="text/css" href="/css/materialdesignicons.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/animate.min.css">
+  <link rel="stylesheet" type="text/css" href="/js/jquery-confirm/jquery-confirm.min.css">
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-lg-12">
+        <div class="card">
+
+          <header class="card-header">
+            <div class="card-title">个人信息</div>
+          </header>
+
+          <div class="card-body">
+            <div class="row" id="top-bar"></div>
+
+            <hr>
+
+            <div class="col-9" style="margin: auto;">
+              <div class="card text-white" style="background-color: rgba(35, 135, 255, 0.6);">
+                <header class="card-header">个人详细信息</header>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="input-group mb-3">
+                        <span for="username" class="input-group-text">用户名</span>
+                        <input type="text" class="form-control" id="profile_username" disabled>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-12">
+                      <button type="button" onclick="logout()" class="btn btn-danger btn-block"
+                        style="display: block;width: 100%;">登出</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/popper.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/main.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap-notify.min.js"></script>
+  <script type="text/javascript" src="/js/lyear-loading.js"></script>
+  <script type="text/javascript" src="/js/jquery-confirm/jquery-confirm.min.js"></script>
+  <script src="/config.js"></script>
+  <script src="/settings.js"></script>
+  <script src="./index.js"></script>
+
+</body>
+
+</html>

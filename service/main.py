@@ -71,7 +71,7 @@ def register():
             res["message"] = "用户名已存在"
             return jsonify(res)
         else:
-            user = User(username=username, password=password)
+            user = User(username=username, password=encrypt(password))
             db.session.add(user)
             db.session.commit()
             res["code"] = 200
@@ -91,7 +91,7 @@ def login():
         return jsonify(res)
     else:
         user = User.query.filter_by(username=username).first()
-        if user and user.password == password:
+        if user and decrypt(password, user.password):
             if remember == 1:
                 login_user(user=user, remember=True, duration=datetime.timedelta(days=30))
             else:

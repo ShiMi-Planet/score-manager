@@ -1,9 +1,14 @@
-var loader
+var loader, verify_state = false
 const f = document.querySelector("body > div > div.col-md-6.col-lg-5.col-xl-4.align-self-center > div > form");
 const login_btn = document.querySelector("#register");
 
 f.addEventListener('submit', function (e) {
   e.preventDefault()
+  if (!verify_state) {
+    document.querySelector("#slider-verification > div > div.ui-slider-text.ui-slider-no-select").style.color = "red"
+    notify("您还没有验证哦！", "warning")
+    return false
+  }
   login_btn.innerHTML = "注册中...";
   login_btn.disabled = true;
   loader = $('button:submit').lyearloading({
