@@ -40,7 +40,7 @@ function fill_data(data) {
       { field: 'class', title: "班级排名", align: "center", sort: true, edit: function (d) { return !d.LAY_DISABLED } },
       { field: 'grade', title: "年级排名", align: "center", sort: true, edit: function (d) { return !d.LAY_DISABLED } },
       { field: 'score', title: "总分", align: "center", sort: true },
-      { fixed: 'right', title: "操作", toolbar: '#ToolBar', unresize: true, width: 200 },
+      { fixed: 'right', title: "操作", toolbar: '#ToolBar', unresize: true, width: 270 },
     ]
 
     cols = cols.filter(function (col) {
@@ -67,14 +67,16 @@ function fill_data(data) {
 
       if (event === 'update') {
         layer.confirm('确认更新排名信息？=>测试名称：' + data.name + '; 班级排名：' + data.class + '; 年级排名：' + data.grade + ';', function (index) {
+          layer.close(index)
           update_data(data.id, data.class, data.grade)
-          layer.close()
         })
       } else if (event === 'del') {
         layer.confirm('确认删除记录吗？测试名称：' + data.name, function (index) {
-          delete_record(data.id, obj)
           layer.close(index)
+          delete_record(data.id, obj)
         });
+      } else if (event === 'detail') {
+        window.open("./detail.html?id=" + data.id, "_blank")
       }
     });
   })

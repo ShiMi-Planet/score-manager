@@ -13,14 +13,15 @@ def exam_detail():
     res = {"code": 0, "message": ""}
     id = request.form.get("id")
     conn, c = connect()
-    count = c.execute('''SELECT count(*) FROM test_list WHERE id = ?''', (id,)).fetchone()[0]
+    count = c.execute('''SELECT count(*) FROM test_list WHERE id=?''', (id,)).fetchone()[0]
     if count == 0:
         conn.close()
         res["code"] = 404
-        res["message"] = "为查找到本次测试"
+        res["message"] = "未查找到本次测试"
         return jsonify(res)
     else:
-        slist = c.execute('''SELECT subject,subject_name,full_score FROM subject WHERE state=1''').fetchall()
+        name = c.execute('''SELECT name FROM test_list WHERE id=?''', (id,)).fetchone()[0]
+        slist = c.execute('''SELECT subject,subject_name,full_score,color FROM subject WHERE state=1''').fetchall()
         detail = []
         for i in slist:
             score = c.execute(f"SELECT {i[0]} FROM test_list WHERE id={id}").fetchone()[0]
@@ -30,12 +31,15 @@ def exam_detail():
                     "subject_name": i[1],
                     "score": score,
                     "full_score": i[2],
+                    "color": i[3],
                 }
             )
         conn.close()
         res["code"] = 200
         res["message"] = "success"
         res["detail"] = detail
+        res["name"] = name
+        res["id"] = id
         return jsonify(res)
 
 
@@ -66,7 +70,7 @@ def exam_list():
     for k in row:
         lid = k[0]
         name = k[1]
-        date = k[2]
+        date = str(k[2]).split(" ")[0]
         class_array = k[3]
         grade_array = k[4]
         subject = c.execute('''SELECT subject,full_score FROM subject WHERE state=1''').fetchall()
@@ -103,7 +107,7 @@ def list_all():
     for i in row:
         lid = i[0]
         lname = i[1]
-        ldate = i[2]
+        ldate = str(i[2]).split(" ")[0]
         class_array = i[3]
         grade_array = i[4]
         subject = c.execute('''SELECT subject,full_score FROM subject WHERE state=1''').fetchall()

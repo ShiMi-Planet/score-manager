@@ -133,15 +133,11 @@ document.getElementById("add-item").addEventListener('click', () => {
 
 var state = true
 document.getElementById("update").addEventListener('click', function () {
-  var loader
+  body_loading_mask()
   const btn = document.getElementById("update")
   btn.disabled = true
   btn.innerText = "数据更新中..."
   var submit_state = true
-  // loader = btn.lyearloading({
-  //   opacity: 0.2,
-  //   spinnerSize: 'nm'
-  // });
   for (let item = 1; item <= index; item++) {
     const card = document.getElementById(item + "_card");
     if (!card) {
@@ -172,13 +168,13 @@ document.getElementById("update").addEventListener('click', function () {
     }
   }
   console.log(submit_state)
-  // loader.destroy()
   btn.disabled = false
   btn.innerText = "提交成绩"
   setTimeout(() => {
     if (submit_state) {
       location.reload()
     }
+    body_loading_mask_destroy()
   }, 2000);
 })
 

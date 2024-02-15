@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS test_list (
     id integer not null primary key,
     name text not null unique,
-    date datetime not null default current_date,
+    date datetime not null default current_timestamp,
     grade int,
     class int
 );

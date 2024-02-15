@@ -4,17 +4,20 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user, login_user, logout_user, login_required, UserMixin
 from datetime import datetime
+
 from config import *
 from setting import *
 
 from subject import subject
 from exam import exam
+from corbook import corb
 
 app = Flask(__name__)
 CORS(app, origins=['*'], supports_credentials=True)
 
 app.register_blueprint(subject, url_prefix='/subject')
 app.register_blueprint(exam, url_prefix='/exam')
+app.register_blueprint(corb, url_prefix='/corbook')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///login-manager.db'
 app.config['SECRET_KEY'] = 'sHImiPlanet-ScoremaNAGer@DAtABasE'
@@ -39,17 +42,18 @@ class User(UserMixin, db.Model):
         return f'<User {self.username}>'
 
     def verify_password(self, password):
-        return self.password == password
+        return decrypt(password, self.password)
 
 
 @login_manager.user_loader
 def load_user(user_id):
-    user = User.query.get(user_id)
+    user = db.session.get(User, user_id)
     return user
 
 
 @app.route("/", methods=['GET'])
 def route_test():
+    print(load_user(current_user.id))
     res = {"code": 0, "message": ""}
     res['code'] = 200
     res['message'] = "OK"
@@ -164,7 +168,7 @@ def change_password():
             res["message"] = "旧密码有误，请检查后再次尝试！"
             return jsonify(res)
         else:
-            current_user.password = new_password
+            current_user.password = encrypt(new_password)
             db.session.commit()
             session.pop("username", None)
             session.pop("password", None)
@@ -198,10 +202,7 @@ def basic_info():
     color = {}
     d = c.execute('''SELECT date FROM test_list ORDER BY date DESC LIMIT 5''').fetchall()
     for date in d:
-        d_list.append(date[0])
-        # second = date[0]/1000
-        # dd = datetime.fromtimestamp(second)
-        # d_list.append(date[0].strftime("%Y/%m/%d"))
+        d_list.append(str(date[0]).split(" ")[0])
     for i in s_list:
         scode = i[0]
         sn = i[1]

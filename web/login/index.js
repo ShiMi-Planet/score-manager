@@ -3,6 +3,10 @@ window.onload = () => {
   valid_login(0)
 }
 
+$(document).ready(function () {
+  load_verify()
+});
+
 var loader, login_state, verify_state = false;
 const f = document.querySelector("body > div > div.col-md-6.col-lg-5.col-xl-4.align-self-center > div > form");
 const login_btn = document.querySelector("#login");
@@ -10,7 +14,7 @@ const login_btn = document.querySelector("#login");
 f.addEventListener('submit', function (e) {
   e.preventDefault();
   if (!verify_state) {
-    document.querySelector("#slider-verification > div > div.ui-slider-text.ui-slider-no-select").style.color = "red"
+    document.querySelector("#imgVer").style = "width: fit-content; margin: auto; border: dashed; border-color: red;"
     notify("您还没有验证哦！", "warning")
     return false
   }
@@ -158,4 +162,33 @@ async function valid_login(step) {
       notify("登录失败，错误原因：浏览器异常，建议刷新重试！", "warning")
     }
   }
+}
+
+function load_verify() {
+  imgVer({
+    el: '$("#imgVer")',
+    width: '260',
+    height: '116',
+    img: [
+      '/images/gallery/1.jpg',
+      '/images/gallery/2.jpg',
+      '/images/gallery/3.jpg',
+      '/images/gallery/4.jpg',
+      '/images/gallery/5.jpg',
+      '/images/gallery/6.jpg',
+      '/images/gallery/7.jpg',
+      '/images/gallery/8.jpg',
+      '/images/gallery/9.jpg',
+      '/images/gallery/10.jpg',
+    ],
+    success: function () {
+      verify_state = true
+      document.querySelector("body > div > div.col-md-6.col-lg-5.col-xl-4.align-self-center > div > form > div:nth-child(3)").outerHTML = ""
+    },
+    error: function () {
+      setTimeout(() => {
+        load_verify()
+      }, 1500);
+    }
+  });
 }
