@@ -3,7 +3,8 @@ CREATE TABLE IF NOT EXISTS test_list (
     name text not null unique,
     date datetime not null default current_timestamp,
     grade int,
-    class int
+    class int,
+    report text
 );
 
 CREATE TABLE IF NOT EXISTS subject (
@@ -36,12 +37,12 @@ INSERT INTO subject (subject, subject_name, full_score) VALUES ('ch','语文',15
                                                                ('po','政治',100),
                                                                ('ge','地理',100);
 
-ALTER TABLE test_list ADD COLUMN ch int DEFAULT 0;
-ALTER TABLE test_list ADD COLUMN ma int DEFAULT 0;
-ALTER TABLE test_list ADD COLUMN en int DEFAULT 0;
-ALTER TABLE test_list ADD COLUMN ph int DEFAULT 0;
-ALTER TABLE test_list ADD COLUMN che int DEFAULT 0;
-ALTER TABLE test_list ADD COLUMN bi int DEFAULT 0;
-ALTER TABLE test_list ADD COLUMN hi int DEFAULT 0;
-ALTER TABLE test_list ADD COLUMN po int DEFAULT 0;
-ALTER TABLE test_list ADD COLUMN ge int DEFAULT 0;
+ALTER TABLE test_list ADD COLUMN ch float DEFAULT 0;
+ALTER TABLE test_list ADD COLUMN ma float DEFAULT 0;
+ALTER TABLE test_list ADD COLUMN en float DEFAULT 0;
+ALTER TABLE test_list ADD COLUMN ph float DEFAULT 0;
+ALTER TABLE test_list ADD COLUMN che float DEFAULT 0;
+ALTER TABLE test_list ADD COLUMN bi float DEFAULT 0;
+ALTER TABLE test_list ADD COLUMN hi float DEFAULT 0;
+ALTER TABLE test_list ADD COLUMN po float DEFAULT 0;
+ALTER TABLE test_list ADD COLUMN ge float DEFAULT 0;

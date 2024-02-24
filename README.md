@@ -137,10 +137,16 @@ recommend you to use the `environment-zh_cn.yaml` file in the root directory as 
 * [ ] Use PIL and Random module to update the security of login with verifycation code.
 * [ ] Simple the deploy method in order to use only one command line or action to run back service and web page service in a time.
 * [ ] (*Optional) *Ready to build this project into a Java based application*
-* [-] Update the select options in *Upload Correct Question* page.
+* [x] Update the select options in *Upload Correct Question* page.
 
 ## Update History
 
+> - ✔ iv 2024.02.24 ***Fourth Commit***
+- 2024.02.24 **Use `SetupFactory` to build the release setup file**
+- 2024.02.24 **Use `.cpp` file and `.bat` file to locally start the service**
+- 2024.02.24 **Fixed some exist problems**
+- 2024.02.24 **Use `Tauri` to build the *Windows Platform* application**
+- 2024.02.23 **Use `pyinstaller` to create the execution file of interface service and web page service**
 > - ✔ iii 2024.02.15 ***Third Commit***
 - 2024.02.15 **Make some interface better**
 - 2024.02.15 **Finish TO-DO:`Update the select options in *Upload Correct Question* page.`**
@@ -183,6 +189,7 @@ recommend you to use the `environment-zh_cn.yaml` file in the root directory as 
 - [Layui Table Module](https://layui.dev/docs/2/table/)
 - [喷子图床](https://pz.al/)
 - [OpenAI ChatGPT](https://chat.openai.com/)
+- [讯飞开放平台](https://www.xfyun.cn/)
 
 ## Donate
 ![](readme_img%2F0b0539bff576c5374aa746a8ea0ce3b.jpg)

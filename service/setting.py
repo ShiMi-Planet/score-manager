@@ -1,6 +1,6 @@
 import sqlite3
 import os
-import bcrypt
+import sys
 from werkzeug.security import generate_password_hash, check_password_hash
 
 filename = 'score-manager.db'
@@ -10,7 +10,13 @@ def preload():
     if not os.path.exists(filename):
         conn = sqlite3.connect(filename)
         c = conn.cursor()
-        with open("./preload.sql", 'r', True, 'UTF-8') as f:
+        if getattr(sys, 'frozen', False):
+            # 如果应用已被打包
+            base_path = sys._MEIPASS
+        else:
+            base_path = os.path.dirname(__file__)
+        sql_file_path = os.path.join(base_path, 'preload.sql')
+        with open(sql_file_path, 'r', True, 'UTF-8') as f:
             c.executescript(f.read())
         conn.commit()
         conn.close()

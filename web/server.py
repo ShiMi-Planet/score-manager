@@ -12,4 +12,4 @@ app.router.add_get('/', handle)
 app.router.add_static('/', path='./', name='static')
 app.router.add_get('/{filename}', static_handler)
 
-web.run_app(app)
+web.run_app(app, port=5001)

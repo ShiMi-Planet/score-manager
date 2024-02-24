@@ -1,45 +1,45 @@
 window.onload = function () {
-  get_data()
-}
+  get_data();
+};
 
 var data = {
-  "subject": [],
-  "subject_name": [],
-  "full_score": [],
-}
+  subject: [],
+  subject_name: [],
+  full_score: [],
+};
 
 var index = 0;
 
 function get_data() {
   const settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": server + "/subject/list?method=true",
-    "method": "GET",
-    "headers": {},
-    "xhrFields": {
-      withCredentials: true
-    }
+    async: true,
+    crossDomain: true,
+    url: server + "/subject/list?method=true",
+    method: "GET",
+    headers: {},
+    xhrFields: {
+      withCredentials: true,
+    },
   };
 
   $.ajax(settings).done(function (response) {
     if (response.code == 200) {
-      response.subject.forEach(e => {
-        data["subject"].push(e["subject"])
-        data["subject_name"].push(e["subject_name"])
-        data["full_score"].push(e["full_score"])
-      })
-      insert_card()
-    }
-    else {
-      notify(response.message, "danger")
+      response.subject.forEach((e) => {
+        data["subject"].push(e["subject"]);
+        data["subject_name"].push(e["subject_name"]);
+        data["full_score"].push(e["full_score"]);
+      });
+      insert_card();
+    } else {
+      notify(response.message, "danger");
     }
   });
 }
 
 function insert_card() {
   index++;
-  var code = ``, insert = ``;
+  var code = ``,
+    insert = ``;
   for (let i = 0; i < data["subject"].length; i++) {
     const subject = data["subject"][i];
     const s_name = data["subject_name"][i];
@@ -52,7 +52,7 @@ function insert_card() {
           <span class="input-group-text">分</span>
         </div>
       </div>
-    `
+    `;
   }
   insert = `
     <div class="col-lg-12" id="${index}_card">
@@ -93,33 +93,33 @@ function insert_card() {
           <button type="reset" class="btn btn-secondary float-end" style="margin-right: 1rem;" id="reset_${index}">重置</button>
         </div>
       </div>
-    </div>`
-  document.getElementById("card-group").insertAdjacentHTML('beforeend', insert)
+    </div>`;
+  document.getElementById("card-group").insertAdjacentHTML("beforeend", insert);
 }
 
 function delete_card(id) {
   $.alert({
-    title: '确认删除成绩卡片',
-    content: '成绩卡片删除后成绩不会被保存，确定删除卡片吗？',
-    type: 'danger',
-    animation: 'scale',
-    closeAnimation: 'right',
+    title: "确认删除成绩卡片",
+    content: "成绩卡片删除后成绩不会被保存，确定删除卡片吗？",
+    type: "danger",
+    animation: "scale",
+    closeAnimation: "right",
     buttons: {
       delete: {
-        text: '确认删除卡片',
-        btnClass: 'btn-danger',
+        text: "确认删除卡片",
+        btnClass: "btn-danger",
         action: function () {
-          this.setCloseAnimation('scale');
-          document.getElementById(id + "_card").outerHTML = ""
-        }
+          this.setCloseAnimation("scale");
+          document.getElementById(id + "_card").outerHTML = "";
+        },
       },
       cancel: {
-        text: '手滑了~',
-        btnClass: 'btn-primary',
+        text: "手滑了~",
+        btnClass: "btn-primary",
         action: function () {
-          this.setCloseAnimation('scale');
-        }
-      }
+          this.setCloseAnimation("scale");
+        },
+      },
     },
     backgroundDismiss: function () {
       return false;
@@ -127,85 +127,97 @@ function delete_card(id) {
   });
 }
 
-document.getElementById("add-item").addEventListener('click', () => {
-  insert_card()
-})
+document.getElementById("add-item").addEventListener("click", () => {
+  insert_card();
+});
 
-var state = true
-document.getElementById("update").addEventListener('click', function () {
-  body_loading_mask()
-  const btn = document.getElementById("update")
-  btn.disabled = true
-  btn.innerText = "数据更新中..."
-  var submit_state = true
+var state = true;
+document.getElementById("update").addEventListener("click", function () {
+  body_loading_mask();
+  const btn = document.getElementById("update");
+  btn.disabled = true;
+  btn.innerText = "分析报告生成中...";
+  var submit_state = true;
+  setTimeout(() => {
+    console.log("Ready to Upload scores.");
+  }, 1000);
   for (let item = 1; item <= index; item++) {
     const card = document.getElementById(item + "_card");
     if (!card) {
-      continue
-    }
-    else {
-      var name = "", class_array, grade_array, score = "";
-      name = document.getElementById(item + "_test_name").value
+      continue;
+    } else {
+      var name = "",
+        class_array,
+        grade_array,
+        score = "";
+      name = document.getElementById(item + "_test_name").value;
       if (name == "") {
-        notify("记录" + item + " - 请输入考试名称！", "danger", 2500)
-        submit_state = false
-        continue
-      }
-      else {
-        data.subject.forEach(sn => {
-          score += sn + "," + document.getElementById(item + "_score_" + sn).value + ";"
+        notify("记录" + item + " - 请输入考试名称！", "danger", 2500);
+        submit_state = false;
+        continue;
+      } else {
+        data.subject.forEach((sn) => {
+          score +=
+            sn +
+            "," +
+            document.getElementById(item + "_score_" + sn).value +
+            ";";
         });
-        class_array = document.getElementById(item + "_class_array").value
-        grade_array = document.getElementById(item + "_grade_array").value
-        update(name, class_array, grade_array, score, item)
+        class_array = document.getElementById(item + "_class_array").value;
+        grade_array = document.getElementById(item + "_grade_array").value;
+        update(name, class_array, grade_array, score, item);
         if (state) {
-          continue
+          continue;
         } else {
-          submit_state = false
-          continue
+          submit_state = false;
+          continue;
         }
       }
     }
   }
-  console.log(submit_state)
-  btn.disabled = false
-  btn.innerText = "提交成绩"
   setTimeout(() => {
+    console.log(submit_state);
+    btn.disabled = false;
+    btn.innerText = "提交成绩";
     if (submit_state) {
-      location.reload()
+      location.reload();
     }
-    body_loading_mask_destroy()
-  }, 2000);
-})
+    body_loading_mask_destroy();
+  }, 1000);
+});
 
 function update(test_name, class_array, grade_array, score, item) {
   const settings = {
-    "async": false,
-    "crossDomain": true,
-    "url": server + "/exam/add/record",
-    "method": "POST",
-    "headers": {
-      "content-type": "application/x-www-form-urlencoded"
+    async: false,
+    crossDomain: true,
+    url: server + "/exam/add/record",
+    method: "POST",
+    headers: {
+      "content-type": "application/x-www-form-urlencoded",
     },
-    "data": {
-      "name": test_name,
-      "class": class_array,
-      "grade": grade_array,
-      "score": score,
+    data: {
+      name: test_name,
+      class: class_array,
+      grade: grade_array,
+      score: score,
     },
-    "xhrFields": {
-      withCredentials: true
-    }
+    xhrFields: {
+      withCredentials: true,
+    },
   };
 
   $.ajax(settings).done(function (response) {
     if (response.code == 200) {
-      notify("记录" + item + "添加成功！", "info")
-      document.getElementById(item + "_card").outerHTML = ""
-      state = true
+      notify("记录" + item + "添加成功！", "info");
+      document.getElementById(item + "_card").outerHTML = "";
+      state = true;
     } else {
-      notify("记录" + item + "添加失败! 错误原因：" + response.message, "danger", 2500)
-      state = false
+      notify(
+        "记录" + item + "添加失败! 错误原因：" + response.message,
+        "danger",
+        2500
+      );
+      state = false;
     }
   });
 }

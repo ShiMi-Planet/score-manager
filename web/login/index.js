@@ -1,5 +1,5 @@
 window.onload = () => {
-  delCookie("session");
+  // delCookie("session");
   valid_login(0)
 }
 

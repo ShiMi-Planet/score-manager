@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"
+    />
+    <title>首页</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./css/materialdesignicons.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./css/style.min.css" />
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row" id="top-bar"></div>
+
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">单科成绩走势</div>
+            </div>
+            <div class="card-body">
+              <canvas class="js-chartjs-lines"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">总分走势</div>
+            </div>
+            <div class="card-body">
+              <canvas class="js-chartjs-lines"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/popper.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/chart.min.js"></script>
+    <script type="text/javascript" src="./js/main.min.js"></script>
+    <script src="./config.js"></script>
+    <script src="./settings.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>

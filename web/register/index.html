@@ -16,6 +16,7 @@
   <link rel="stylesheet" type="text/css" href="/css/animate.min.css">
   <link rel="stylesheet" type="text/css" href="/css/style.min.css">
   <link rel="stylesheet" type="text/css" href="/js/jquery-confirm/jquery-confirm.min.css">
+  <link rel="stylesheet" href="/js/imgver/imgver.min.css">
   <style>
     .ui-slider-wrap {
       background: #ececec;
@@ -92,7 +93,7 @@
 
       <div class="d-flex vh-100">
         <div class="p-5 align-self-start">
-          <img src="/images/banner.png" style="width: 35%;">
+          <img src="/images/favicon.png" style="width: 35%;">
           <br><br><br>
           <p class="text-dark">个人成绩管理系统是由<a target="_blank"
               href="https://github.com/ShiMi-Planet">柿米星球</a>团队为学生提供的本地化成绩管理服务系统</p>
@@ -118,7 +119,7 @@
           </div>
 
           <div class="mb-3">
-            <div id="slider-verification" class="slider"></div>
+            <div id="imgVer" class="slider" style="width: fit-content; margin: auto;"></div>
           </div>
 
           <div class="mb-3 d-grid">
@@ -141,29 +142,10 @@
   <script type="text/javascript" src="/js/bootstrap-notify.min.js"></script>
   <script type="text/javascript" src="/js/jquery-confirm/jquery-confirm.min.js"></script>
   <script type="text/javascript" src="/js/plugins/jquery.sliderVerification.min.js"></script>
+  <script type="text/javascript" src="/js/imgver/jquery.img.ver.min.js"></script>
   <script src="/config.js"></script>
   <script src="/settings.js"></script>
   <script src="./index.js"></script>
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $("#slider-verification").slider({
-        width: 340,                     // width
-        height: 38,                     // height
-        sliderBg: "#f9fafb",            // 滑块背景颜色
-        color: "#8b95a5",               // 文字颜色
-        fontSize: 14,                   // 文字大小
-        bgColor: "#15c377",             // 背景颜色
-        textMsg: "按住滑块，拖拽验证",     // 提示文字
-        successMsg: "验证通过",       // 验证成功提示文字
-        successColor: "#fff",           // 滑块验证成功提示文字颜色
-        time: 400,                      // 返回时间
-        callback: function (result) {    // 回调函数，true(成功),false(失败)
-          verify_state = true
-        }
-      });
-    });
-  </script>
 
 </body>
 

@@ -3,6 +3,8 @@ from flask import Blueprint, request, jsonify
 from flask_login import login_required
 from config import *
 from setting import *
+from spark import genReport
+import markdown
 
 exam = Blueprint('exam', __name__)
 
@@ -21,6 +23,8 @@ def exam_detail():
         return jsonify(res)
     else:
         name = c.execute('''SELECT name FROM test_list WHERE id=?''', (id,)).fetchone()[0]
+        report = c.execute('''SELECT report FROM test_list WHERE id=?''', (id,)).fetchone()[0]
+        report = markdown.markdown(report)
         slist = c.execute('''SELECT subject,subject_name,full_score,color FROM subject WHERE state=1''').fetchall()
         detail = []
         for i in slist:
@@ -40,6 +44,7 @@ def exam_detail():
         res["detail"] = detail
         res["name"] = name
         res["id"] = id
+        res["report"] = report
         return jsonify(res)
 
 
@@ -168,22 +173,34 @@ def add_record():
                     continue
                 else:
                     maxs = c.execute('''SELECT full_score FROM subject WHERE subject=?''', (m[0],)).fetchone()[0]
-                    if int(m[1]) > maxs or int(m[1]) < 0:
+                    if float(m[1]) > float(maxs) or float(m[1]) < 0.0:
                         conn.close()
                         res["code"] = 300
                         res["message"] = "分数超过最大限度！"
                         return jsonify(res)
                     else:
                         subject_list.append(m[0])
-                        value_list.append(int(m[1]))
+                        value_list.append(float(m[1]))
             verify = c.execute('''SELECT COUNT(*) FROM test_list WHERE name=?''', (name,)).fetchone()[0]
             if verify == 0:
                 c.execute('''INSERT INTO test_list (name,grade,class) VALUES (?,?,?)''',
                           (name, grade_array, class_array))
                 conn.commit()
+                sparkStr = ""
                 for i in range(len(subject_list)):
                     c.execute(f"UPDATE test_list SET {subject_list[i]}={value_list[i]} WHERE name='{name}'")
                     conn.commit()
+                    subName = \
+                        c.execute('''SELECT subject_name FROM subject WHERE subject=?''',
+                                  (subject_list[i],)).fetchone()[0]
+                    FullMark = \
+                        c.execute('''SELECT full_score FROM subject WHERE subject=?''', (subject_list[i],)).fetchone()[
+                            0]
+                    sparkStr += f'我的{subName}成绩为{value_list[i]}分，这个科目的满分为{FullMark};'
+                report = genReport(sparkStr)[1]['content']
+                # report = "分析功能调试中：" + sparkStr
+                c.execute('''UPDATE test_list SET report=? WHERE name=?''', (report, name))
+                conn.commit()
                 conn.close()
                 res["code"] = 200
                 res["message"] = "success"

@@ -1,7 +1,7 @@
-const host = location.hostname;
+const host = "localhost";
 const port = 5000;
 const server = "http://" + host + ":" + port;
 
 const image_server = "https://pz.al/api/upload"
 
-const version = "0.1.15"
+const version = "0.1.16"
