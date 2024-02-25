@@ -1,7 +1,4 @@
 window.onload = function () {
-  if (getCookie("session") == "") {
-    window.open("./login/index.html", "_self");
-  }
   check_state();
   set_username();
 };

@@ -1,3 +1,5 @@
+@echo off
+%1(start /min cmd.exe /c %0 :& exit )
 tasklist|find /i "SanagerService.exe"
 if %errorlevel%==0 (
     taskkill /IM "SanagerService.exe"
