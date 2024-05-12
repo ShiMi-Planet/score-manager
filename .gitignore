@@ -1,0 +1,10 @@
+**/.idea/*
+**/test.*
+**/*.db
+**/instance/*
+**/.vscode/*
+**/__pycache__/*
+**/*.pyc
+**/.vscode/*
+**/build/*
+**/*.spec
