@@ -9,7 +9,6 @@ This project is local-build system with python Flask as the backend service and 
 - [Contribute Instruction](#contribute-instruction)
     - [For web page developper](#for-web-page-developper)
     - [For service developper](#for-service-developper)
-    - [For Chinese Mainland developpers](#for-chinese-mainland-developpers)
 - [TODO List](#todo-list)
 - [Update History](#update-history)
 - [Thanks For Technology Providers Used in This Project](#thanks-for-technology-providers-used-in-this-project)
@@ -17,6 +16,8 @@ This project is local-build system with python Flask as the backend service and 
 
 ## Environment Required
 > This project is a font and back separated application, and the font page is designed with `HTML`, the service is provided by `Python Flask` structure. By the way, the data storage method is under `sqlite` database.
+>
+> This project is welcoming more contributors to use better plugins.
 
 All the environment you need is:
 1. A personal computer with `Python 3.x` (As I develop it in `anaconda` with `Python 3.12.1`)
@@ -26,12 +27,12 @@ All the environment you need is:
 
 ***IMPORTANT*** : When you want to build up the server, some python module is needed!
 
-* [x] Flask
-* [x] Flask-login
-* [x] flask_sqlalchemy
-* [x] sqlite3
-* [x] aiohttp
-* [ ] pillow
+* [x] `Flask`
+* [x] `Flask-login`
+* [x] `flask_sqlalchemy`
+* [x] `sqlite3`
+* [x] `aiohttp`(To make the desktop application run successful with its service provide.)
+* [ ] `pillow`
 
 conda method: (**Recommend**: virtual env)
 ```bash
@@ -91,6 +92,8 @@ http://192.168.x.x:8080 (recommend)
 
 In order to ensure the environment we use is the same, it's recommend that use the `environment.yaml` file to set up new virtual environment in `anaconda`, and you can follow the step like this.
 
+The name of virtual environment is set to `sanager` and you can change it with `-n` option.
+
 ```bash
 conda env create -f environment.yaml
 ```
@@ -104,7 +107,9 @@ the `demo.html` file is for the functional pages' module, and you could follow t
 *About Card Header*
 ```html
 <header class="card-header">
-  <div class="card-title"><!-- Put the card title in this place that will be shown in the head of each page's card --></div>
+  <div class="card-title">
+    <!-- Put the card title in this place that will be shown in the head of each page's card -->
+  </div>
 </header>
 ```
 
@@ -128,15 +133,11 @@ the `demo.html` file is for the functional pages' module, and you could follow t
 
 recommend you to use anaconda environment to update the service and database, by the way, it's a nice choise to use `Pycharm` as your primary tool.
 
-### For Chinese Mainland developpers
-
-recommend you to use the `environment-zh_cn.yaml` file in the root directory as your anaconda properties import entry, that way, you can prevent the net-work limitation, and enjoy the smooth deploy feelings
-
 ## TODO List
 
-* [ ] Use PIL and Random module to update the security of login with verifycation code.
 * [ ] Simple the deploy method in order to use only one command line or action to run back service and web page service in a time.
 * [ ] (*Optional) *Ready to build this project into a Java based application*
+* [ ] Use PIL and Random module to update the security of login with verifycation code.
 * [x] Update the select options in *Upload Correct Question* page.
 
 ## Update History
@@ -188,6 +189,8 @@ recommend you to use the `environment-zh_cn.yaml` file in the root directory as 
 - [CKeditor](https://ckeditor.com/)
 - [Layui Table Module](https://layui.dev/docs/2/table/)
 - [喷子图床](https://pz.al/)
+- [Gitee AI](https://ai.gitee.com/)
+- [EasyOCR](https://github.com/JaidedAI/EasyOCR)
 - [OpenAI ChatGPT](https://chat.openai.com/)
 - [讯飞开放平台](https://www.xfyun.cn/)
 

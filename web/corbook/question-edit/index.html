@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <title>错题列表</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="stylesheet" type="text/css" href="/css/materialdesignicons.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/animate.min.css">
+  <link rel="stylesheet" type="text/css" href="/js/jquery-confirm/jquery-confirm.min.css">
+  <link rel="stylesheet" href="/js/plugins/layui/css/layui.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-lg-12">
+        <div class="card">
+
+          <header class="card-header">
+            <div class="card-title">错题列表</div>
+          </header>
+
+          <div class="card-body">
+            <div id="test_data"></div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script type="text/html" id="ToolBar">
+    <a href="" class="layui-btn layui-btn-xs" lay-event="detail">详情</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除记录</a>
+  </script>
+
+  <script type="text/html" id="question_show">
+    <div class="d-inline-block text-truncate" style="max-width: 270px;">
+        {{d.question}}
+    </div>
+  </script>
+
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/popper.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/main.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap-notify.min.js"></script>
+  <script type="text/javascript" src="/js/lyear-loading.js"></script>
+  <script type="text/javascript" src="/js/jquery-confirm/jquery-confirm.min.js"></script>
+  <script type="text/javascript" src="/js/plugins/layui/layui.js"></script>2
+  <script src="/config.js"></script>
+  <script src="/settings.js"></script>
+  <script src="./index.js"></script>
+
+</body>
+
+</html>

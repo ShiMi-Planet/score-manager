@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <title>错题详情</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="stylesheet" type="text/css" href="/css/materialdesignicons.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/animate.min.css">
+  <link rel="stylesheet" type="text/css" href="/js/jquery-confirm/jquery-confirm.min.css">
+
+  <style>
+    .ck.ck-content:not(.ck-comment__input *) {
+      height: 500px;
+      overflow-y: auto;
+    }
+
+    [data-theme='dark'] .ck.ck-toolbar,
+    [data-theme|='translucent'] .ck.ck-toolbar,
+    [data-theme='dark'] .ck.ck-editor__main>.ck-editor__editable,
+    [data-theme|='translucent'] .ck.ck-editor__main>.ck-editor__editable,
+    [data-theme='dark'] .ck.ck-toolbar .ck.ck-toolbar__separator,
+    [data-theme|='translucent'] .ck.ck-toolbar .ck.ck-toolbar__separator {
+      background-color: rgba(var(--bs-white-rgb), .2);
+    }
+
+    [data-theme='dark'] .ck.ck-toolbar,
+    [data-theme|='translucent'] .ck.ck-toolbar,
+    [data-theme='dark'] .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused),
+    [data-theme|='translucent'] .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+      border-color: rgba(var(--bs-white-rgb), .2);
+    }
+
+    [data-theme='dark'] .ck.ck-dropdown__panel,
+    [data-theme|='translucent'] .ck.ck-dropdown__panel {
+      background-color: rgba(var(--bs-white-rgb), .2);
+      border-color: rgba(var(--bs-white-rgb), .2);
+      backdrop-filter: blur(10px);
+    }
+
+    [data-theme='dark'] .ck.ck-list,
+    [data-theme|='translucent'] .ck.ck-list {
+      background-color: transparent;
+    }
+  </style>
+</head>
+
+<body style="background-image: url(/images/background.png);">
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-lg-12">
+        <div class="card">
+
+          <header class="card-header">
+            <div class="card-title">
+              <button type="button" class="btn-close" style="display: inline; font-size: smaller;"
+                onclick="window.close()"></button>
+              错题详情
+            </div>
+          </header>
+
+          <div class="card-body">
+            <div class="row">
+              <div class="col-6">
+                <h4>
+                  科目选择
+                  <p style="color: red;display: inline;">*</p>
+                </h4>
+                <select class="form-select" id="subject_select" aria-label="科目选择" disabled>
+                  <option selected value="0">-- 请选择科目 --</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <h4>关联测试</h4>
+                <select class="form-select" id="test_select" aria-label="关联测试选择">
+                  <option selected value="0">-- 无关联测试 --</option>
+                </select>
+              </div>
+            </div>
+            <hr>
+
+            <h4>
+              题目
+              <p style="color: red;display: inline;">*</p>
+            </h4>
+            <p>请注意：在图片上传时，使用第三方图床，请勿上传涉及版权、隐私等不宜上传内容！图片上传可能存在卡顿，请耐心等待！</p>
+            <!-- question editor -->
+            <div id="editor_question"></div>
+            <hr>
+
+            <h4>
+              题目解析及答案
+              <p style="color: red;display: inline;">*</p>
+            </h4>
+            <div id="editor_answer"></div>
+            <hr>
+
+            <h4>失分点分析</h4>
+            <div id="editor_lose"></div>
+            <hr>
+
+            <button class="btn btn-primary" onclick="save()">保存</button>
+            <button class="btn btn-secondary" onclick="reset()">重置</button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/popper.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/main.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap-notify.min.js"></script>
+  <script type="text/javascript" src="/js/lyear-loading.js"></script>
+  <script type="text/javascript" src="/js/jquery-confirm/jquery-confirm.min.js"></script>
+  <script type="text/javascript" src="/js/ckeditor/ckeditor.js"></script>
+  <script type="text/javascript" src="/js/ckeditor/translations/zh.js"></script>
+  <script src="/config.js"></script>
+  <script src="/settings.js"></script>
+  <script src="./detail.js"></script>
+
+</body>
+
+</html>
