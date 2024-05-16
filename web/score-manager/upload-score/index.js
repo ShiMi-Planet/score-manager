@@ -140,37 +140,37 @@ document.getElementById('update').addEventListener('click', function () {
   var submit_state = true;
   setTimeout(() => {
     console.log('Ready to Upload scores.');
-  }, 1000);
-  for (let item = 1; item <= index; item++) {
-    const card = document.getElementById(item + '_card');
-    if (!card) {
-      continue;
-    } else {
-      var name = '',
-        class_array,
-        grade_array,
-        score = '';
-      name = document.getElementById(item + '_test_name').value;
-      if (name == '') {
-        notify('记录' + item + ' - 请输入考试名称！', 'danger', 2500);
-        submit_state = false;
+    for (let item = 1; item <= index; item++) {
+      const card = document.getElementById(item + '_card');
+      if (!card) {
         continue;
       } else {
-        data.subject.forEach(sn => {
-          score += sn + ',' + document.getElementById(item + '_score_' + sn).value + ';';
-        });
-        class_array = document.getElementById(item + '_class_array').value;
-        grade_array = document.getElementById(item + '_grade_array').value;
-        update(name, class_array, grade_array, score, item);
-        if (state) {
-          continue;
-        } else {
+        var name = '',
+          class_array,
+          grade_array,
+          score = '';
+        name = document.getElementById(item + '_test_name').value;
+        if (name == '') {
+          notify('记录' + item + ' - 请输入考试名称！', 'danger', 2500);
           submit_state = false;
           continue;
+        } else {
+          data.subject.forEach(sn => {
+            score += sn + ',' + document.getElementById(item + '_score_' + sn).value + ';';
+          });
+          class_array = document.getElementById(item + '_class_array').value;
+          grade_array = document.getElementById(item + '_grade_array').value;
+          update(name, class_array, grade_array, score, item);
+          if (state) {
+            continue;
+          } else {
+            submit_state = false;
+            continue;
+          }
         }
       }
     }
-  }
+  }, 1000);
   setTimeout(() => {
     console.log(submit_state);
     btn.disabled = false;
@@ -184,7 +184,7 @@ document.getElementById('update').addEventListener('click', function () {
 
 function update(test_name, class_array, grade_array, score, item) {
   const settings = {
-    async: true,
+    async: false,
     crossDomain: true,
     url: server + '/exam/add/record',
     method: 'POST',

@@ -39,12 +39,13 @@ def checklen(text):
     return text
 
 
-def genReport(marks):
+def genReport(stdin):
     text.clear
-    Input = f'接下来我将告诉你我本次考试的成绩，你的任务是帮我分析我的整体成绩，例如是否偏科、优势科目有哪些以及对于我未来学习规划的建议，你的回答只需要包含分析的内容，不需要复述我的成绩，我的成绩是：{marks}'
+    Input = stdin
     question = checklen(getText("user", Input))
     SparkApi.answer = ""
     # print("星火:", end="")
     SparkApi.main(appid, api_key, api_secret, Spark_url, domain, question)
-    return getText("assistant", SparkApi.answer)
+    result = getText("assistant", SparkApi.answer)
+    return result[len(result)-1]['content']
     # print(str(text))

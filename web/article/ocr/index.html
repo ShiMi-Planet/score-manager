@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+    <title>OCR</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="stylesheet" type="text/css" href="/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="/js/jquery-confirm/jquery-confirm.min.css" />
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <header class="card-header">
+              <div class="card-title">英语文章拍照分析</div>
+            </header>
+
+            <div class="card-body">
+              <input type="checkbox" name="ana" id="ana" />
+              <label for="ana">是否分析文段</label>
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" id="inputGroupFile" />
+                <label class="input-group-text" for="inputGroupFile">上传</label>
+              </div>
+              <hr />
+              <div class="container">
+                <div id="preview"></div>
+              </div>
+              <hr />
+              <div class="row">
+                <label for="ocr-banner">识别结果</label>
+                <div class="col-12" id="ocr-banner">
+                  <textarea class="form-control" style="width: 100%;" name="ocr" id="ocr" rows="10"></textarea>
+                </div>
+                <label for="re-banner">分析结果</label>
+                <div class="col-12" id="re-banner">
+                  <iframe src="" frameborder="0" id="re" style="width: 100%; height: 30rem"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/popper.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/main.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap-notify.min.js"></script>
+    <script type="text/javascript" src="/js/lyear-loading.js"></script>
+    <script type="text/javascript" src="/js/jquery-confirm/jquery-confirm.min.js"></script>
+    <script src="/config.js"></script>
+    <script src="/settings.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>

@@ -16,7 +16,7 @@ def preload():
         else:
             base_path = os.path.dirname(__file__)
         sql_file_path = os.path.join(base_path, 'preload.sql')
-        with open(sql_file_path, 'r', True, 'UTF-8') as f:
+        with open(sql_file_path, 'r', encoding='UTF-8') as f:
             c.executescript(f.read())
         conn.commit()
         conn.close()

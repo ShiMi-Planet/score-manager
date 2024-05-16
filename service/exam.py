@@ -1,12 +1,26 @@
 import math
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template
 from flask_login import login_required
+from flaskext.markdown import Markdown
 from config import *
 from setting import *
 from spark import genReport
-import markdown
 
 exam = Blueprint('exam', __name__)
+
+
+@exam.route("/mark-analyze/<int:id>", methods=['GET'])
+@login_required
+def analyze_markdown(id):
+    conn, c = connect()
+    valid = c.execute('''SELECT COUNT(*) FROM test_list WHERE id=?''', (id,)).fetchone()[0]
+    if valid == 0:
+        conn.close()
+        return render_template("md.html", markdown_content="*未查找到相关记录*")
+    else:
+        report = c.execute('''SELECT report FROM test_list WHERE id=?''', (id,)).fetchone()[0]
+        conn.close()
+        return render_template("md.html", markdown_content=report)
 
 
 @exam.route("/detail", methods=["POST"])
@@ -23,8 +37,6 @@ def exam_detail():
         return jsonify(res)
     else:
         name = c.execute('''SELECT name FROM test_list WHERE id=?''', (id,)).fetchone()[0]
-        report = c.execute('''SELECT report FROM test_list WHERE id=?''', (id,)).fetchone()[0]
-        report = markdown.markdown(report)
         slist = c.execute('''SELECT subject,subject_name,full_score,color FROM subject WHERE state=1''').fetchall()
         detail = []
         for i in slist:
@@ -44,7 +56,6 @@ def exam_detail():
         res["detail"] = detail
         res["name"] = name
         res["id"] = id
-        res["report"] = report
         return jsonify(res)
 
 
@@ -197,7 +208,9 @@ def add_record():
                         c.execute('''SELECT full_score FROM subject WHERE subject=?''', (subject_list[i],)).fetchone()[
                             0]
                     sparkStr += f'我的{subName}成绩为{value_list[i]}分，这个科目的满分为{FullMark};'
-                report = genReport(sparkStr)[1]['content']
+                    stdin = f'接下来我将告诉你我本次考试的成绩，你的任务是帮我分析我的整体成绩，例如是否偏科、优势科目有哪些以及对于我未来学习规划的建议，你的回答只需要包含分析的内容，不需要复述我的成绩，我的成绩是：{sparkStr}'
+                # report = genReport(stdin)[1]['content']
+                report = genReport(stdin)
                 # report = "分析功能调试中：" + sparkStr
                 c.execute('''UPDATE test_list SET report=? WHERE name=?''', (report, name))
                 conn.commit()

@@ -7,7 +7,7 @@ var data = {
 window.onload = function () {
   get_data();
   fill_table_head();
-  fill_table_body();
+  // fill_table_body();
 };
 
 function get_data() {
@@ -25,6 +25,7 @@ function get_data() {
   $.ajax(settings).done(function (response) {
     if (response.code == 200) {
       data['body'] = response.subject;
+      fill_table_body();
     } else {
       notify(response.message, 'danger');
     }

@@ -1,6 +1,7 @@
 window.onload = function () {
   document.title = '测试详情 - #' + getQueryParamFromURL('id');
   get_data();
+  set_report();
 };
 
 var data = [];
@@ -12,6 +13,24 @@ var chart_data = {
   rate: [],
   color: []
 };
+
+function set_report() {
+  const id = getQueryParamFromURL('id');
+  const settings = {
+    async: true,
+    crossDomain: true,
+    url: server + '/exam/mark-analyze/' + id,
+    method: 'GET',
+    headers: {},
+    xhrFields: {
+      withCredentials: true
+    }
+  };
+
+  $.ajax(settings).done(function (response) {
+    document.getElementById('report').srcdoc = response;
+  });
+}
 
 function get_data() {
   const settings = {
@@ -34,7 +53,7 @@ function get_data() {
     if (response.code == 200) {
       document.getElementById('test_name').innerText = '#' + response.id + ' ' + response.name;
       data = response.detail;
-      document.getElementById('report').innerHTML = response.report;
+      // document.getElementById('report').innerHTML = response.report;
       fill_data();
     } else {
       notify(response.message, 'danger');

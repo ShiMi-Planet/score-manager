@@ -5,12 +5,15 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user, login_user, logout_user, login_required, UserMixin
 from datetime import datetime
 
+from flaskext.markdown import Markdown
+
 from config import *
 from setting import *
 
 from subject import subject
 from exam import exam
 from corbook import corb
+from article import article
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
@@ -20,9 +23,12 @@ cross_origin(
     methods="*",
 )
 
+Markdown(app)
+
 app.register_blueprint(subject, url_prefix='/subject')
 app.register_blueprint(exam, url_prefix='/exam')
 app.register_blueprint(corb, url_prefix='/corbook')
+app.register_blueprint(article, url_prefix='/article')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///login-manager.db'
 app.config['SECRET_KEY'] = 'sHImiPlanet-ScoremaNAGer@DAtABasE'

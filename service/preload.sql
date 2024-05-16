@@ -26,6 +26,13 @@ CREATE TABLE IF NOT EXISTS correct_book(
     lose_analyze text
 );
 
+CREATE TABLE IF NOT EXISTS article(
+    id integer not null primary key,
+    article text not null,
+    report text,
+    img text not null
+);
+
 
 INSERT INTO subject (subject, subject_name, full_score) VALUES ('ch','语文',150),
                                                                ('ma','数学',150),
