@@ -65,7 +65,41 @@ function fill_data(data) {
 
       if (event === 'detail') {
         window.open('./detail.html?id=' + data.id, '_blank');
-      }
+      } 
+      // else if (event === 'del') {
+      //   layer.confirm('确认删除记录吗？识别结果：' + data.article, function (index) {
+      //     layer.close(index);
+      //     let delete_mask = mask_loading('记录删除中...');
+      //     delete_record(data.id, obj, delete_mask);
+      //   });
+      // }
     });
   });
+}
+
+function delete_record(id, obj, mask) {
+  const settings = {
+    async: false,
+    crossDomain: true,
+    url: server + '/article/delete',
+    method: 'POST',
+    headers: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    data: {
+      id: id
+    }
+  };
+
+  $.ajax(settings).done(function (response) {
+    if (response.code == 200) {
+      obj.del();
+      notify('记录删除成功！', 'success');
+    } else {
+      notify(response.message, 'warning');
+    }
+  });
+  setTimeout(() => {
+    destroy_mask(mask);
+  }, 1000);
 }

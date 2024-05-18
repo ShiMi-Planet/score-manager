@@ -1,4 +1,0 @@
-easyocr
-pillow
-flask
-flask-cors

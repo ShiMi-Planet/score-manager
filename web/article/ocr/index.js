@@ -17,10 +17,17 @@ document.getElementById('inputGroupFile').addEventListener('change', function (e
 });
 
 function get_result(b64, s, mask) {
+  console.log(s);
+  let type = 0;
+  if (s) {
+    type = 1;
+  } else {
+    type = 0;
+  }
   const settings = {
     async: false,
     crossDomain: true,
-    url: server + '/article/ocr',
+    url: server + '/article/ocr/' + type,
     method: 'POST',
     headers: {
       'content-type': 'application/x-www-form-urlencoded'
@@ -36,34 +43,13 @@ function get_result(b64, s, mask) {
 
   $.ajax(settings).done(function (response) {
     if (response.code == 200) {
-      document.getElementById('ocr').value = response.result;
+      // fill_data();
+      notify('文本识别成功！', 'success');
+    } else {
+      notify(response.message, 'danger');
     }
   });
-  if (s) {
-    const settings = {
-      async: false,
-      crossDomain: true,
-      url: server + '/article/ocr',
-      method: 'POST',
-      headers: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      timeout: 0,
-      data: {
-        data: b64
-      },
-      xhrFields: {
-        withCredentials: true
-      }
-    };
-
-    $.ajax(settings).done(function (response) {
-      if (response.code == 200) {
-        document.getElementById('re').srcdoc = response;
-      }
-    });
-  } else {
-    document.getElementById('re').srcdoc = `(None)`;
-  }
-  mask_destroy(mask);
+  setTimeout(() => {
+    mask_destroy(mask);
+  }, 1500);
 }

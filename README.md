@@ -12,6 +12,7 @@ This project is local-build system with python Flask as the backend service and 
 - [TODO List](#todo-list)
 - [Update History](#update-history)
 - [Thanks For Technology Providers Used in This Project](#thanks-for-technology-providers-used-in-this-project)
+- 
 - [Donate](#donate)
 
 ## Environment Required
@@ -142,6 +143,12 @@ recommend you to use anaconda environment to update the service and database, by
 
 ## Update History
 
+> - ✔ v 2024.05.19 ***Version 2.0.0 Publish***
+
+- 2024.05.19 **Add artificial intelligent reader with Vision Ability (OCR)**
+- 2024.05.19 **Fixed some known problem**
+- 2024.05.19 **Use `easyocr` to tackle the OCR mission**
+
 > - ✔ iv 2024.02.24 ***Fourth Commit***
 - 2024.02.24 **Use `SetupFactory` to build the release setup file**
 - 2024.02.24 **Use `.cpp` file and `.bat` file to locally start the service**
@@ -193,6 +200,10 @@ recommend you to use anaconda environment to update the service and database, by
 - [EasyOCR](https://github.com/JaidedAI/EasyOCR)
 - [OpenAI ChatGPT](https://chat.openai.com/)
 - [讯飞开放平台](https://www.xfyun.cn/)
+
+## Welcome Contact For Further Communication
+Email: [BillyLin](mailto:billylin00@yeah.net)
+![](readme_img%2FIMG_0072.JPG)
 
 ## Donate
 ![](readme_img%2F0b0539bff576c5374aa746a8ea0ce3b.jpg)

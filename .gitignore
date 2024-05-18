@@ -8,3 +8,5 @@
 **/.vscode/*
 **/build/*
 **/*.spec
+**/.prettierrc
+**/dist/*
