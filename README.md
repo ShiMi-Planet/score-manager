@@ -12,6 +12,7 @@ This project is local-build system with python Flask as the backend service and 
 - [TODO List](#todo-list)
 - [Update History](#update-history)
 - [Thanks For Technology Providers Used in This Project](#thanks-for-technology-providers-used-in-this-project)
+- [Welcome Contact For Further Communication](#welcome-contact-for-further-communication)
 - [Donate](#donate)
 
 ## Environment Required
@@ -135,12 +136,19 @@ recommend you to use anaconda environment to update the service and database, by
 
 ## TODO List
 
+* [ ] *Make the system can be deployed with cluster by **Docker** with **SaaS** method
 * [ ] Simple the deploy method in order to use only one command line or action to run back service and web page service in a time.
 * [ ] (*Optional) *Ready to build this project into a Java based application*
 * [ ] Use PIL and Random module to update the security of login with verifycation code.
 * [x] Update the select options in *Upload Correct Question* page.
 
 ## Update History
+
+> - ✔ v 2024.05.19 ***Version 2.0.0 Publish***
+
+- 2024.05.19 **Add artificial intelligent reader with Vision Ability (OCR)**
+- 2024.05.19 **Fixed some known problem**
+- 2024.05.19 **Use `easyocr` to tackle the OCR mission**
 
 > - ✔ iv 2024.02.24 ***Fourth Commit***
 - 2024.02.24 **Use `SetupFactory` to build the release setup file**
@@ -193,6 +201,11 @@ recommend you to use anaconda environment to update the service and database, by
 - [EasyOCR](https://github.com/JaidedAI/EasyOCR)
 - [OpenAI ChatGPT](https://chat.openai.com/)
 - [讯飞开放平台](https://www.xfyun.cn/)
+
+## Welcome Contact For Further Communication
+
+Email: [BillyLin](mailto:billylin00@yeah.net)
+![](readme_img%2FIMG_0072.JPG)
 
 ## Donate
 ![](readme_img%2F0b0539bff576c5374aa746a8ea0ce3b.jpg)
