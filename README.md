@@ -204,7 +204,7 @@ recommend you to use anaconda environment to update the service and database, by
 
 ## Welcome Contact For Further Communication
 
-Email: [BillyLin](mailto:billylin00@yeah.net)
+Email: [BillyLin](mailto:billy_lin00@yeah.net)
 ![](readme_img%2FIMG_0072.JPG)
 
 ## Donate
